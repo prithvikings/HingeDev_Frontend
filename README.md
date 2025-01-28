@@ -7,8 +7,14 @@
 - Add NavBar.jsx component to App.jsx
 - Install react router dom
 - create BrowserRouter > Routes > Route=/Body> RouterChildren
-- Create abb outlet in your body component
-
+- Create an outlet in your body component
+- Create a footer
+- Create a login page
+- Install axios
+- CORS- Install cors in backend => add middleware to with configuration: origin, credentials:true
+- whenever you,re making API call so pass axios=> {withcredentials: true}
+- Install Redux Toolkit - https://redux-toolkit.js.org/tutorials/quick-start
+- Install react-redux + @reduxjs/toolkit => configurestore => Provider => createSlice => add reducer to store
 
 Body
     NavBar

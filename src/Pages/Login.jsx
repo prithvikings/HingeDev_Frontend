@@ -6,10 +6,14 @@ const Login = () => {
   const [Password, setPassword] = useState("");
   const handlelogin = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/login", {
-        email: Email, // lowercase 'email'
-  password: Password, // lowercase 'password'
-      });
+      const res = await axios.post(
+        "http://localhost:3000/login",
+        {
+          email: Email, // lowercase 'email'
+          password: Password, // lowercase 'password'
+        },
+        { withCredentials: true }
+      );
     } catch (err) {
       console.log(err);
     }
@@ -36,7 +40,9 @@ const Login = () => {
             />
           </div>
           <div className="card-actions justify-center">
-            <button className="btn btn-primary" onClick={handlelogin}>Login</button>
+            <button className="btn btn-primary" onClick={handlelogin}>
+              Login
+            </button>
           </div>
         </div>
       </div>
