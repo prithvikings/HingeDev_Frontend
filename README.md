@@ -2,8 +2,8 @@
 
 - Create a vite + React Application
 - Remove Unnecessary code and create a Hello World App
-- INstall tailwind css
-- INstall Daisy Ui
+- Install tailwind css
+- Install Daisy Ui
 - Add NavBar.jsx component to App.jsx
 - Install react router dom
 - create BrowserRouter > Routes > Route=/Body> RouterChildren
@@ -20,6 +20,9 @@
 - Login and see if your data is coming properly in the store
 - NavBar should update as soon as user logs in 
 - Refractor our code to add constants file + create a component folder
+- You should not be access other routes without login
+- If token is not present, redirect user to login page
+
 
 Body
     NavBar
