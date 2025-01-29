@@ -18,7 +18,6 @@ const EditProfile = ({ user }) => {
   const [showToast, setShowToast] = useState(false);
 
   const saveProfile = async () => {
-    //Clear Errors
     setError("");
     try {
       const res = await axios.patch(
@@ -33,15 +32,37 @@ const EditProfile = ({ user }) => {
         },
         { withCredentials: true }
       );
-      dispatch(addUser(res?.data?.data));
-      setShowToast(true);
-      setTimeout(() => {
-        setShowToast(false);
-      }, 3000);
+
+      console.log("Profile update response:", res);
+
+      // Updated to correctly extract the user data
+      if (res?.data?.user) {
+        console.log("Profile updated successfully:", res.data.user);
+
+        // Dispatch updated user to Redux
+        dispatch(addUser(res.data.user));
+
+        // Update local state
+        setFirstName(res.data.user.firstName);
+        setLastName(res.data.user.lastName);
+        setphotourl(res.data.user.photourl);
+        setAge(res.data.user.age);
+        setGender(res.data.user.gender);
+        setAbout(res.data.user.about);
+
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+        }, 3000);
+      } else {
+        console.error("Unexpected response structure:", res);
+        setError("Error updating profile, please try again.");
+      }
     } catch (err) {
-      setError(err.response.data);
+      console.log("Error updating profile:", err);
+      setError(err.response?.data || "Error updating profile");
     }
-  };
+};
 
   return (
     <>

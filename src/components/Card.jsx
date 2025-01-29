@@ -2,8 +2,11 @@ import React from 'react'
 
 
 const Card = ({user}) => {
-    const {firstName,lastName,photourl,about,age,gender}=user;
+  if (!user) {
+    return <div>Loading...</div>; // Or any fallback UI
+  }
 
+  const { firstName, lastName, photourl,age, gender,about } = user;
   return (
     <div className="card bg-base-300 w-96 shadow-sm">
   <figure>
