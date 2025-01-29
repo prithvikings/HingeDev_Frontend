@@ -13,16 +13,20 @@ const Feed = () => {
   const feed=useSelector((store)=>store.feed);
   const dispatch = useDispatch();
   const getFeed = async () => {
-    if(feed)return;
-    try{
-      const response=await axios.get(BASE_URL+"/feed",{
-        withCredentials:true
+    if (feed) return;
+    try {
+      const response = await axios.get(BASE_URL + "/feed", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Attach the JWT token in the Authorization header
+        },
+        withCredentials: true, // Keep this if you are handling cookies as well
       });
       dispatch(addFeed(response.data));
-    }catch(error){
-        console.log(error);
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
+  
   useEffect(()=>{
     getFeed();
   },[]);
